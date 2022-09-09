@@ -1,9 +1,80 @@
 //--------------------------------------------------------------------------//
+//---------------------------Globales---------------------------------------//
+//--------------------------------------------------------------------------//
+let diccionario = ["HOLA", "ASD", "ESTAS"] //Diccionario de palabras posibles
+let palabraSecreta;
+let palabraSecretaRestante;
+let fallos = 0;
+
+let juegoActivo = false;
+let letrasErroneas = [];
+
+
+
+//--------------------------------------------------------------------------//
+//---------------------------Letras-----------------------------------------//
+//--------------------------------------------------------------------------//
+
+window.addEventListener('keydown', registrarTeclas)
+
+function registrarTeclas(event){
+    if(juegoActivo){
+        if(esTeclaDeLetra(event.keyCode)){
+            let letraIngresada = String.fromCharCode(event.keyCode).toUpperCase();
+            
+            let letraEncontrada = false;
+            for(var i = 0; i < palabraSecreta.length; i++){
+                if(palabraSecreta.charAt(i) == letraIngresada){
+                    letraEncontrada = true;
+                    if(palabraSecretaRestante.includes(letraIngresada)){
+                        
+                        //Busco el contenedor de dicha letra.
+                        let contenedor = document.querySelector('#hidden-letters-container :nth-child('+ (i+1) +')')
+                        contenedor.innerHTML = letraIngresada
+                        //borro la letra de la cadena restante
+                        let posicionLetra = palabraSecretaRestante.indexOf(letraIngresada)
+                        palabraSecretaRestante = palabraSecretaRestante.slice(0,posicionLetra) + palabraSecretaRestante.slice(posicionLetra+1)
+                        console.log(palabraSecretaRestante)
+                        //Checkeo victoria
+                        if(palabraSecretaRestante == ''){
+                            juegoActivo = false;
+                            alert("Ganaste!")
+                        }
+                    }    
+                }
+            }
+            if(!letraEncontrada && !letrasErroneas.includes(letraIngresada)){
+                letrasErroneas.push(letraIngresada) //Agrego la letra ingresada a las erroneas
+                let letra = document.createElement("div") //Creo div
+                letra.innerHTML = letraIngresada //Agrego contenido al div
+                //Busco el contenedor y agrego a la letra como hijo.
+                let contenedor = document.querySelector('#wrong-letters-container'); 
+                contenedor.appendChild(letra)
+                fallos++
+                
+                //Agrego un fallo y dibujo la horca correspondiente.
+                if(fallos >= 6){
+                    juegoActivo = false;
+                    alert("Perdiste el juego.")
+                }
+                dibujarCanvas(fallos)
+            }
+        }
+    }
+}
+
+function esTeclaDeLetra(keycode){
+    return (keycode >= 65 && keycode <= 90) || (keycode >= 975 && keycode <= 122)
+}
+
+
+//--------------------------------------------------------------------------//
 //---------------------------Botones----------------------------------------//
 //--------------------------------------------------------------------------//
 
 function iniciarJuego(){
     palabraSecreta = getPalabraSecreta();
+    palabraSecretaRestante = palabraSecreta;
     console.log(palabraSecreta)
     mostrarGame(palabraSecreta)
 }
@@ -17,6 +88,8 @@ function iniciarJuegoConPalabra(){
     
     if(esPalabraValida(palabraIngresada)){
         palabraSecreta = palabraIngresada
+        palabraSecretaRestante = palabraSecreta;
+        diccionario.push(palabraSecreta)
         console.log(palabraSecreta)
         mostrarGame(palabraSecreta)
     } else {
@@ -29,13 +102,16 @@ function cancelarWordEntry(){
 }
 
 function rendirse(){
+    juegoActivo = false
     mostrarMenu()
 }
 
 function reiniciarJuego(){
     palabraSecreta = getPalabraSecreta();
+    palabraSecretaRestante = palabraSecreta;
     console.log(palabraSecreta)
     mostrarGame(palabraSecreta)
+    
 }
 
 
@@ -50,8 +126,6 @@ document.getElementById("btn-newGame").onclick = reiniciarJuego;
 //--------------------------------------------------------------------------//
 //---------------------------Palabra Secreta--------------------------------//
 //--------------------------------------------------------------------------//
-let diccionario = ["p1", "p2", "p3"] //Diccionario de palabras posibles
-let palabraSecreta;
 
 // Devuelve el valor de una posicion aleatoria de diccionario, entre 0 y su longitud-1
 function getPalabraSecreta(){
@@ -82,6 +156,14 @@ let canvas = document.querySelector("canvas");
 let ctx = canvas.getContext("2d");    
 ctx.lineWidth = 5;
 ctx.strokeStyle = "#0A3871";
+
+function reiniciarCanvas(){
+    ctx.clearRect(0,0,canvas.width, canvas.height);
+    var w = canvas.width;
+    canvas.width = 1;
+    canvas.width = w;
+}
+
 
 //dibujarCanvas
 //dibuja la horca con 0 fallos, y por cada fallo dibuja otra parte del cuerpo.
@@ -161,6 +243,19 @@ function mostrarGame(palabraSecreta){
     seccionGame.style.display = 'flex';
     seccionWordEntry.style.display = 'none';
 
+    //reinicio globales
+    juegoActivo = true
+    letrasErroneas = []
+    fallos = 0;
+    letrasAcertadas = 0;
+    //reinicio los contenedores
+    document.getElementById('hidden-letters-container').innerHTML = ""
+    document.getElementById('wrong-letters-container').innerHTML = ""
+
+    //reinicio canvas
+    reiniciarCanvas()
+
+    dibujarCanvas(fallos);
     generarLineasDeLetras(palabraSecreta);
 }
 
