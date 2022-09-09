@@ -1,0 +1,114 @@
+footer {
+  position: absolute;
+  bottom: 0px;
+  height: 10vh;
+  width: 100vw;
+  background-color: #072b61;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  color: #f3f5fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+footer .footer-links {
+  margin-left: 1vw;
+}
+
+header {
+  height: 10vh;
+}
+header .alura-logo {
+  margin: 1vw;
+}
+
+button {
+  font-family: "Inter", sans-serif;
+  width: 200px;
+  height: 40px;
+  margin: 0.5vw;
+  border-radius: 14px;
+  border: 1px solid #0a3871;
+}
+
+.button-big {
+  width: 250px;
+  height: 60px;
+  border-radius: 18px;
+}
+.button-wide {
+  width: 50%;
+  height: 60px;
+  border-radius: 18px;
+}
+.button-dark {
+  background-color: #0a3871;
+  color: #e9ecf8;
+}
+.button-dark:hover {
+  background-color: #072b61;
+}
+.button-light {
+  background-color: #e9ecf8;
+  color: #0a3871;
+}
+.button-light:hover {
+  background-color: #aab2d5;
+}
+
+section {
+  height: 80vh;
+}
+section .menu, section .game, section .word-entry {
+  height: 100%;
+  width: 100%;
+}
+section .menu {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+section .game {
+  display: none;
+}
+section .word-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+section .word-entry-form textarea {
+  color: #0a3871;
+  font-size: 22px;
+  font-family: "Inter", sans-serif;
+  margin: top 1vh;
+  width: 90vw;
+  height: 60vh;
+  background-color: transparent;
+  border: none;
+  resize: none;
+}
+section .word-entry-form textarea:focus {
+  outline: none;
+}
+section .word-entry-form label {
+  display: flex;
+  margin-left: 1%;
+  color: #495057;
+}
+section .word-entry-form label img {
+  margin-right: 8px;
+}
+section .word-entry-form .botonera {
+  display: flex;
+  justify-content: space-between;
+}
+
+body {
+  font: 100% "Inter", sans-serif;
+  background-color: #e9ecf8;
+  color: #0a3871;
+  font-size: 16px;
+}/*# sourceMappingURL=styles.css.map */

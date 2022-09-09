@@ -1,0 +1,35 @@
+@use 'root'
+    
+button
+    font-family: root.$font-stack
+    width: 200px
+    height: 40px
+    margin:0.5vw
+    border-radius:14px       
+    border: 1px solid root.$dark-blue-300 
+
+.button
+    &-big
+        width:250px
+        height:60px
+        border-radius:18px 
+
+    &-wide
+        width:50%
+        height: 60px
+        border-radius:18px            
+
+    &-dark
+        background-color: root.$dark-blue-300
+        color: root.$light-blue-300
+
+        &:hover
+            background-color: root.$dark-blue-400
+
+    &-light
+        background-color: root.$light-blue-300
+        color: root.$dark-blue-300
+
+        &:hover
+            background-color: root.$light-blue-400           
+
