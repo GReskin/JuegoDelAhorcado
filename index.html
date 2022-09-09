@@ -17,30 +17,57 @@
     </header>
 
     <section>
-        <div class="menu">
-            <button class="button-dark button-big">Iniciar Juego</button>
-            <button class="button-light">Agregar nueva palabra</button>
+        <div class="menu" id="menu">
+            <button class="button-dark button-big" id="btn-start">Iniciar Juego</button>
+            <button class="button-light" id="btn-wordEntry">Agregar nueva palabra</button>
         </div>
 
-        <div class="game"></div>
-
-        <div class="word-entry">
-            <form class="word-entry-form">
-                <textarea name="newWord" id="newWord" cols="20" rows="20" placeholder="Ingrese una palabra..."></textarea>
-                <label>
-                    <img src="img/alert-icon.svg" alt="Alert Icon">
-                    Maximo 8 caracteres, solo letras.
-                </label>
-                <div class="botonera">
-                    <button class="button-dark button-wide">Guardar y empezar</button>
-                    <button class="button-light button-wide">Cancelar</button>
+        <div class="game" id="game">
+            <div class="game-area">
+                <div class="game-area-display">
+                    <canvas id="canvas" height="500" width="1000"></canvas>
                 </div>
-            </form>
+                <div class="game-area-container">
+                    <div class="game-area-container-word">
+                        <div>H</div>
+                        <div>O</div>
+                        <div>L</div>
+                        <div>I</div>
+                        <div>S</div>
+                    </div>
+                    <div class="game-area-container-usedLetters">
+                        <div>a</div>
+                        <div>b</div>
+                        <div>c</div>
+                        <div>d</div>
+                        <div>e</div>
+                        <div>f</div>
+                    </div>
+                </div>
+            </div>
+            <div class="botonera">
+                <button class="button-dark button-wide" id="btn-newGame">Nuevo Juego</button>
+                <button class="button-light button-wide" id="btn-forfeit">Desistir</button>
+            </div>
+        </div>
+
+        <div class="word-entry" id="word-entry">
+                <div class="word-entry-display">
+                    <textarea name="newWord" id="newWord" cols="20" rows="20" placeholder="Ingrese una palabra..."></textarea>
+                    <label>
+                        <img src="img/alert-icon.svg" alt="Alert Icon">
+                        Maximo 8 caracteres, solo letras.
+                    </label>
+                </div>
+                <div class="botonera">
+                    <button class="button-dark button-wide" id="btn-startWithWord">Guardar y empezar</button>
+                    <button class="button-light button-wide" id="btn-cancelWordEntry">Cancelar</button>
+                </div>
         </div>
     </section>
 
     <footer>
-        <p>Proyecto realizado por Gaston Reskin - 2022</p>
+        <p>Gaston Reskin - 2022</p>
         <div class="footer-links">
             <a href="https://github.com/GReskin">
                 <img src="img/github-logo.png" alt="Github logo">
@@ -51,5 +78,6 @@
         </div>
     </footer>
     
+    <script src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,26 @@
+@use '../root'
+    
+.word-entry
+        display: none
+        
+        &-display
+            textarea
+                color: root.$dark-blue-300
+                font-size: 22px
+                font-family: root.$font-stack
+                margin: top 1vh 
+                width: 90vw
+                height: 60vh
+                background-color: transparent
+                border: none
+                resize: none
+
+                &:focus
+                    outline: none
+
+            label
+                display: flex
+                margin-left:1%
+                color: root.$gray-400  
+                img
+                    margin-right: 8px

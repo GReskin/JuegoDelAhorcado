@@ -2,18 +2,27 @@ footer {
   position: absolute;
   bottom: 0px;
   height: 10vh;
-  width: 100vw;
+  width: 100%;
   background-color: #072b61;
   text-align: center;
   margin: 0px;
   padding: 0px;
   color: #f3f5fc;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  font-size: 12px;
+}
+footer p {
+  margin-left: 5vw;
 }
 footer .footer-links {
-  margin-left: 1vw;
+  display: flex;
+}
+footer .footer-links a {
+  height: 80%;
+  padding: 2%;
 }
 
 header {
@@ -21,6 +30,7 @@ header {
 }
 header .alura-logo {
   margin: 1vw;
+  height: 100%;
 }
 
 button {
@@ -60,26 +70,84 @@ button {
 section {
   height: 80vh;
 }
-section .menu, section .game, section .word-entry {
+section > * {
   height: 100%;
   width: 100%;
-}
-section .menu {
-  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-section .game {
-  display: none;
+
+.botonera {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
 }
-section .word-entry {
+
+.menu {
+  display: flex;
+}
+
+.game {
+  display: none;
+  width: 100%;
+  height: 80%;
+}
+.game-area {
   display: flex;
   flex-direction: column;
+  margin: auto;
+  width: 95%;
+  height: 100%;
+}
+.game-area-display {
+  height: 75%;
+  width: 100%;
+}
+.game-area-display canvas {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.game-area-container {
+  height: 25%;
+  width: 100%;
+}
+.game-area-container-word {
+  height: 60%;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
-section .word-entry-form textarea {
+.game-area-container-word > * {
+  height: 50%;
+  width: 4vw;
+  text-align: center;
+  border-radius: 8px;
+  border-bottom: 3px solid #0a3871;
+  margin: 1%;
+  font-size: 20px;
+}
+.game-area-container-usedLetters {
+  height: 40%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.game-area-container-usedLetters > * {
+  color: #0a3871;
+  margin: 1%;
+}
+.game .botonera {
+  width: 95%;
+  margin: auto;
+}
+
+.word-entry {
+  display: none;
+}
+.word-entry-display textarea {
   color: #0a3871;
   font-size: 22px;
   font-family: "Inter", sans-serif;
@@ -90,20 +158,16 @@ section .word-entry-form textarea {
   border: none;
   resize: none;
 }
-section .word-entry-form textarea:focus {
+.word-entry-display textarea:focus {
   outline: none;
 }
-section .word-entry-form label {
+.word-entry-display label {
   display: flex;
   margin-left: 1%;
   color: #495057;
 }
-section .word-entry-form label img {
+.word-entry-display label img {
   margin-right: 8px;
-}
-section .word-entry-form .botonera {
-  display: flex;
-  justify-content: space-between;
 }
 
 body {

@@ -1,4 +1,4 @@
-@use 'root'
+@use '../root'
 
 $footer-background-color: root.$dark-blue-400
 $footer-font-color: root.$light-blue-100
@@ -7,16 +7,25 @@ footer
     position: absolute
     bottom: 0px
     height: 10vh
-    width: 100vw
+    width: 100%
     background-color: $footer-background-color
     text-align: center
     margin:0px
     padding: 0px
     color: $footer-font-color
     display: flex
+    flex-direction: row
     align-items: center
-    justify-content: center    
+    justify-content: space-evenly
+    font-size: 12px
+    
+    p
+        margin-left:5vw
 
     .footer-links
-        margin-left: 1vw
+        display: flex
+        a
+            height: 80%
+            padding: 2%
+            
             
