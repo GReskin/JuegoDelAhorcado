@@ -1,7 +1,9 @@
 //--------------------------------------------------------------------------//
 //---------------------------Globales---------------------------------------//
 //--------------------------------------------------------------------------//
-let diccionario = ["HOLA", "ASD", "ESTAS"] //Diccionario de palabras posibles
+//Diccionario de palabras posibles
+let diccionario =['AMOR', 'CAFE', 'EQUIPO', 'GUITARRA', 'PLASTICO', 'CREMA', 'MARTILLO', 'LIBRO', 'LAPIZ', 'TEMOR', 'ALUMINIO', 'BARCO', 'LETRA', 'MIEL', 'RUEDA', 'ESCUELA', 'ACERO', 'PERRO', 'LLAVE', 'SILLA', 'CUNA', 'TECLADO', 'TENEDOR', 'MAPA', 'MENSAJE', 'COHETE', 'REY', 'EDIFICIO', 'HOJA', 'FAMILIA', 'GRANIZO', 'FLOR', 'SALUD', 'HOMBRE', 'MUJER', 'VELERO', 'ABUELA', 'GUERRA', 'PALO', 'TEMPLO', 'LENTES', 'NUBE', 'BOTELLA', 'CASTILLO', 'VERANO', 'RIQUEZA', 'PERSONA', 'GUANTE', 'PLANETA', 'PODER', 'MUELA', 'PERCHA', 'TIEMPO', 'CUADERNO', 'PARED', 'RUIDO', 'SUERTE', 'CARTA', 'CORBATA', 'ALMA', 'PLANTA', 'ZAPATO', 'OFICINA', 'PRADERA', 'ENSALADA', 'DEPORTE', 'AVE', 'NIEVE', 'TROPA', 'CARNE', 'HUMEDAD', 'TECLA', 'MALETIN', 'CUCHILLO', 'RELOJ', 'RADIO', 'CELULAR', 'CUADRO', 'CALOR', 'TEATRO', 'DISCURSO', 'FIESTA']
+
 let palabraSecreta;
 let palabraSecretaRestante;
 let fallos = 0;
