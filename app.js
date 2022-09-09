@@ -5,7 +5,7 @@
 function iniciarJuego(){
     palabraSecreta = getPalabraSecreta();
     console.log(palabraSecreta)
-    mostrarGame()
+    mostrarGame(palabraSecreta)
 }
 
 function agregarNuevaPalabra(){
@@ -13,9 +13,15 @@ function agregarNuevaPalabra(){
 }
 
 function iniciarJuegoConPalabra(){
-    palabraSecreta = document.getElementById('newWord').value;
-    console.log(palabraSecreta)
-    mostrarGame()
+    palabraIngresada = document.getElementById('newWord').value.toString().toUpperCase();
+    
+    if(esPalabraValida(palabraIngresada)){
+        palabraSecreta = palabraIngresada
+        console.log(palabraSecreta)
+        mostrarGame(palabraSecreta)
+    } else {
+        alert("Palabra ingresada invalida. Solo se aceptan palabras de hasta 8 digitos y solo letras.")
+    }
 }
 
 function cancelarWordEntry(){
@@ -29,7 +35,7 @@ function rendirse(){
 function reiniciarJuego(){
     palabraSecreta = getPalabraSecreta();
     console.log(palabraSecreta)
-    mostrarGame()
+    mostrarGame(palabraSecreta)
 }
 
 
@@ -52,6 +58,21 @@ function getPalabraSecreta(){
     return diccionario[Math.floor(Math.random() * diccionario.length )]
 }
 
+function esPalabraValida(palabra){
+    return (palabra.length>= 1 && palabraIngresada.length <= 8 && tieneSoloLetras(palabra))
+}
+
+function tieneSoloLetras(palabra){
+    return /^[A-Za-z]*$/.test(palabra);
+}
+
+function generarLineasDeLetras(palabra){
+    document.getElementById('hidden-letters-container').innerHTML = ""; //Limpio los hijos del contenedor
+    for(var i = 0; i<palabra.length; i++){
+        let letra = document.createElement("div") //Creo div
+        document.getElementById('hidden-letters-container').appendChild(letra); //Pongo el div como hijo del contenedor
+    }
+}
 
 //--------------------------------------------------------------------------//
 //---------------------------Canvas-----------------------------------------//
@@ -111,7 +132,7 @@ function dibujarCanvas(fallos){
             ctx.stroke()
             break;
 
-        case 6:
+        case 6: //pierna derecha
             ctx.beginPath()
             ctx.moveTo(600,325)
             ctx.lineTo(640,400)
@@ -135,10 +156,12 @@ function mostrarMenu(){
     seccionWordEntry.style.display = 'none';
 }
 
-function mostrarGame(){
+function mostrarGame(palabraSecreta){
     seccionMenu.style.display = 'none';
     seccionGame.style.display = 'flex';
     seccionWordEntry.style.display = 'none';
+
+    generarLineasDeLetras(palabraSecreta);
 }
 
 function mostrarWordEntry(){
